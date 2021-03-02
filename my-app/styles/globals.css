@@ -57,6 +57,11 @@ form {
   border-radius: 4px;
   margin: 18px 0;
 }
+.btn:hover {
+  background: rgb(5, 83, 157);
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
 @media only screen and (max-width: 768px) {
   body {
     min-height: 100vh;

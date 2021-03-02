@@ -10,6 +10,6 @@ To run the application on your machine, type the command below in your terminal.
 
 ## Password encoding
 
-To run the password encoding script, you'd have to navigate to `assets/js/encode.js`, then type `node encode` into your terminal
+To run the password encoding script, you'd have to navigate to `public/assets/js/encode.js`, then type `node encode` into your terminal
 
 You can also try changing the value of the parameter in the console.log(statement)
