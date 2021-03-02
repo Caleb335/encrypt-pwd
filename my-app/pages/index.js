@@ -1,65 +1,93 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from "react";
 
-export default function Home() {
+const App = () => {
+  // making use of React's useState hook to store or hold
+  // the state of the user's input
+  const [inputs, setInputs] = React.useState({
+    fullname: "",
+    email: "",
+    password: "",
+  });
+
+  // an helper function or event handler
+  // to handle the input change of the user
+  const handleInputChange = (name) => (e) => {
+    setInputs({
+      ...inputs,
+      [name]: e.target.value,
+    });
+    console.log(name);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputs.fullname) {
+      alert("fullname cannot be blank");
+      fullname.focus();
+      return false;
+    }
+    if (!inputs.email) {
+      alert("email address cannot be blank");
+      email.focus();
+      return false;
+    }
+    if (!inputs.password) {
+      alert("password field cannot be blank");
+      password.focus();
+      return false;
+    }
+    return true;
+  };
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <form>
+      <div className="inputs-container">
+        <label htmlFor="fullname">Full name</label>
+        <div className="form-group">
+          <input
+            type="text"
+            name="fullname"
+            id="fullname"
+            className="form-control"
+            placeholder="enter your fullname"
+            onChange={handleInputChange("fullname")}
+            value={inputs.fullname}
+          />
         </div>
-      </main>
+      </div>
+      <div>
+        <label htmlFor="fullname">E-mail</label>
+        <div className="form-group">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className="form-control"
+            placeholder="enter your email address"
+            onChange={handleInputChange("email")}
+            value={inputs.email}
+          />
+        </div>
+      </div>
+      <div>
+        <label htmlFor="fullname">Password</label>
+        <div className="form-group">
+          <input
+            type="password"
+            name="password"
+            id="pwd"
+            className="form-control"
+            placeholder="enter your password"
+            onChange={handleInputChange("password")}
+            value={inputs.password}
+          />
+        </div>
+      </div>
+      <button className="btn" onClick={handleSubmit}>
+        sign up
+      </button>
+    </form>
+  );
+};
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
-}
+export default App;
